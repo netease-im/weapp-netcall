@@ -1,0 +1,7 @@
+.page-box {
+  background: #000;
+}
+.bgImg {
+  width: 100%;
+  height: 100%;
+}

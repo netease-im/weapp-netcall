@@ -1,0 +1,43 @@
+.ipt {
+  width: 640rpx;
+}
+.action {
+  height: 174rpx;
+}
+.action-play {
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  width: 294rpx;
+}
+.action-play-btn {
+  margin: 20rpx 0 0 44rpx;
+  width: 134rpx;
+}
+.action-play-img {
+  width: 134rpx;
+  height: 134rpx;
+}
+.action-param {
+  position: absolute;  
+  top: 0;  
+  right: 0;
+  display: inline-block;
+  padding: 0;
+  width: 450rpx;
+}
+.action-param-item {
+  display: inline-block;
+  margin: 35rpx 40rpx 0 0;
+  padding: 0;
+  width: 112rpx;
+  height: 110rpx;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8rpx;
+}
+.action-param-img {
+  display: block;
+  margin: 20rpx auto 12rpx;
+  width: 44rpx;
+  height: 44rpx;
+}

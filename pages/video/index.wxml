@@ -1,0 +1,35 @@
+<view class="page-box" style="{{!playSrc && !playing ? 'background: url(/res/img/bg.png);' : ''}}">
+  <view class="ipt-box" hidden="{{playing}}">
+    <input
+      class="ipt"
+      placeholder-class="placeholder"
+      value="{{src}}"
+      maxlength="-1"
+      confirm-type="go"
+      bindblur="inputSrc"
+      placeholder="请粘贴、扫码获取播放地址"
+    />
+      <image src="/res/img/file.png" class="btn btn-1" bindtap="getSrc"></image>  
+      <image src="/res/img/scan.png" class="btn btn-2" bindtap="scanQRCode"></image>  
+     <text class="desc">支持mp4格式视频播放</text> 
+  </view>
+  <view class="video-box"  style="height:{{pulling?'100%':'calc(100% - 150rpx)'}};">
+    <image 
+      wx:if="{{!playSrc && !playing}}"
+      class="bgImg"
+      src="/res/img/bg.png" 
+      bindtap="tip"
+    ></image>
+    <video
+      wx:else
+      id="video"
+      class="video"
+      src="{{playSrc}}"
+      bindplay="play"
+      bindpause="pause"
+      bindended="ended"
+      bindfullscreenchange="fullscreenchange"
+      binderror="error"
+    />
+  </view>
+</view>

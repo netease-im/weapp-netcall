@@ -1,0 +1,8 @@
+<view class="page">
+  <text class="f-db tt">RTMP播放地址</text>
+  <text class="f-db des">推荐小程序扫码播放</text>
+  <canvas class="f-db qrcode" canvas-id="rtmpUrl"></canvas>
+  <text class="f-db tt">HLS播放地址</text>
+  <view class="f-db des">推荐<text class="f-c-red">微信扫一扫</text>播放</view>
+  <canvas class="f-db qrcode" canvas-id="hlsUrl"></canvas>
+</view>

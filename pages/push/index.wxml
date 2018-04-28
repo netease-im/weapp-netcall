@@ -1,0 +1,99 @@
+<view class="page-box" style="background: url(/res/img/bg.png);">
+  <view wx:if="{{!pushing}}" class="ipt-box">
+    <input
+      class="ipt"
+      placeholder-class="placeholder"
+      value="{{url}}"
+      maxlength="-1"
+      confirm-type="go"
+      bindblur="inputPushUrl"
+      placeholder="请粘贴、扫码或点击获取推流地址" />
+    <image src="/res/img/file.png" class="btn btn-1" bindtap="getPushUrl"></image>
+    <image src="/res/img/scan.png" class="btn btn-2" bindtap="scanQRCode"></image>
+  </view>
+  <view class="video-box" style="height:{{pushing?'100%':'calc(100% - 100rpx)'}};">
+    <live-pusher
+      id="videoPusher"
+      class="video"
+      url="{{url}}"
+      mode="{{mode}}"
+      enable-camera="{{enableCamera}}"
+      beauty="{{beauty}}"
+      whiteness="{{whiteness}}"
+      orientation="{{orientation}}"
+      muted="{{muted}}"
+      bindstatechange="statechange"
+      binderror="error"
+    >
+      <cover-image
+        hidden="{{pushing}}"
+        class="video coverImg"
+        src="/res/img/bg.png"
+        background-size="cover"
+      ></cover-image>
+      <cover-view class="action f-o-v">
+        <cover-view class="action-play f-o-v">
+          <cover-view wx:if="{{!pushing}}" class="action-play-btn">
+            <cover-image src="/res/img/play.png" class="action-play-img" bindtap="play"></cover-image>
+            <cover-view>推流</cover-view>
+          </cover-view>
+          <cover-view wx:else class="action-play-btn">
+            <cover-image src="/res/img/pause.png" class="action-play-img" bindtap="stop"></cover-image>
+            <cover-view>停止</cover-view>
+          </cover-view>      
+        </cover-view>
+        <cover-view class="action-param">
+          <cover-view class="action-param-line action-param-line-1">
+            <cover-view class="action-param-item {{beauty ? '' : 'f-disable'}}" bindtap="switchBeauty">
+              <cover-image class="action-param-img" src="/res/img/beauty.png"></cover-image>
+              <cover-view>美颜</cover-view>
+            </cover-view>
+            <cover-view class="action-param-item {{whiteness ? '' : 'f-disable'}}" bindtap="switchWhiteness">
+              <cover-image class="action-param-img" src="/res/img/white.png"></cover-image>
+              <cover-view>美白</cover-view>
+            </cover-view>
+            <cover-view class="action-param-item" bindtap="showHideMode">
+              <cover-image wx:if="{{mode === 'FHD'}}" class="action-param-img" src="/res/img/df_ssd.png"></cover-image>
+              <cover-image wx:if="{{mode === 'HD'}}" class="action-param-img" src="/res/img/df_hd.png"></cover-image>
+              <cover-image wx:if="{{mode === 'SD'}}" class="action-param-img" src="/res/img/df_sd.png"></cover-image>            
+              <cover-view>清晰度</cover-view>
+            </cover-view>
+            <cover-view class="action-param-item {{rearCamera ? '' : 'f-disable'}}" bindtap="handoverCamera">
+              <cover-image class="action-param-img" src="/res/img/turnout.png"></cover-image>
+              <cover-view>翻转</cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class="action-param-line action-param-line-2">
+            <cover-view class="action-param-item {{muted ? '' : 'f-disable'}}" bindtap="switchMuted">
+              <cover-image class="action-param-img" src="/res/img/mute.png"></cover-image>
+              <cover-view>静音</cover-view>
+            </cover-view>
+            <cover-view class="action-param-item {{enableCamera ? '' : 'f-disable'}}" bindtap="switchCamera">
+              <cover-image class="action-param-img" src="/res/img/camera.png"></cover-image>
+              <cover-view>摄像头</cover-view>
+            </cover-view>
+            <cover-view class="action-param-item {{orientation === 'vertical' ? 'f-disable' : ''}}" bindtap="switchOrientation">
+              <cover-image class="action-param-img" src="/res/img/anyway.png"></cover-image>
+              <cover-view>{{orientation === 'vertical' ? '竖屏' : '横屏'}}</cover-view>
+            </cover-view>
+            <cover-view class="action-param-item {{isServerAutoUrl ? '' : 'f-disable'}}" bindtap="pullQRCode">
+              <cover-image class="action-param-img" src="/res/img/qrcode.png"></cover-image>
+              <cover-view>扫码播放</cover-view>
+            </cover-view>
+          </cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view wx:if="{{showModeMenu}}" class="mode-menu">
+        <cover-view class="mode-menu-item {{mode === 'FHD' ? '' : 'f-disable'}}">
+          <cover-image class="mode-menu-img" src="/res/img/df_ssd.png" data-type="FHD" bindtap="switchMode"></cover-image>
+        </cover-view>
+        <cover-view class="mode-menu-item {{mode === 'HD' ? '' : 'f-disable'}}">
+          <cover-image class="mode-menu-img" src="/res/img/df_hd.png" data-type="HD" bindtap="switchMode"></cover-image>
+        </cover-view>
+        <cover-view class="mode-menu-item {{mode === 'SD' ? '' : 'f-disable'}}">
+          <cover-image class="mode-menu-img" src="/res/img/df_sd.png" data-type="SD" bindtap="switchMode"></cover-image>            
+        </cover-view>
+      </cover-view>
+    </live-pusher>    
+  </view>
+</view>

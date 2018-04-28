@@ -1,0 +1,18 @@
+.page {
+  padding-top: 20rpx;
+  font-size: 24rpx;
+  color: #333;
+  text-align: center;
+  line-height: 40rpx;
+}
+.tt {
+  margin-top: 60rpx;
+}
+.des {
+  margin-bottom: 20rpx;
+}
+.qrcode {
+  margin: 0 auto;
+  width: 160px;
+  height: 160px;
+}

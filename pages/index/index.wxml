@@ -1,0 +1,34 @@
+<view class="flex-wrp">
+  <navigator class="flex-item" url="/pages/push/index" hover-class="none">
+    <view class="btn-item btn-item-1">
+      <image class="item-img" src="/res/img/push_icon.png" background-size="cover"></image>
+      <text class="item-txt">直播推流</text> 
+    </view>
+  </navigator>
+  <navigator class="flex-item" url="/pages/pull/index" hover-class="none">
+    <view class="btn-item btn-item-2">
+      <image class="item-img" src="/res/img/pull_icon.png" background-size="cover"></image>
+      <text class="item-txt">直播播放</text>   
+    </view>
+  </navigator>
+  <navigator class="flex-item" url="/pages/video/index" hover-class="none">
+    <view class="btn-item btn-item-3">
+      <image class="item-img" src="/res/img/vod_icon.png" background-size="cover"></image>
+      <text class="item-txt">点播播放</text>   
+    </view>
+  </navigator>
+  <view class="flex-item">
+    <view class="btn-item btn-item-4">
+      <image class="item-img" src="/res/img/future_icon.png" background-size="cover"></image>
+      <text class="item-txt item-txt-des">敬请期待</text>   
+    </view>
+  </view>
+</view>
+<view class="intro">
+  <view>
+    <image class="intro-logo" src="/res/img/logo.png" background-size="cover"></image>
+  </view>
+  <view>
+    <text class="intro-desc">本程序展示音视频能力由网易云信提供技术支持</text>
+  </view>
+</view>

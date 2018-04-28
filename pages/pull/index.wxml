@@ -1,0 +1,61 @@
+<view class="page-box" style="background: url(/res/img/bg.png);">
+  <view class="ipt-box" hidden="{{pulling}}">
+    <input
+      class="ipt"
+      placeholder-class="placeholder"
+      value="{{src}}"
+      maxlength="-1"
+      confirm-type="go"
+      bindblur="inputSrc"
+      placeholder="请粘贴、扫码获取播放地址" />
+    <image src="/res/img/scan.png" class="btn btn-2" bindtap="scanQRCode"></image>
+    <text class="desc">支持RTMP、Http-flv协议的直播播放。</text>
+  </view>
+  <view class="video-box" style="height:{{pulling?'100%':'calc(100% - 150rpx)'}};">
+    <live-player
+      id="livePlayer"
+      class="video"
+      src="{{src}}"
+      mode="{{mode}}"
+      autoplay="{{autoplay}}"
+      muted="{{muted}}"
+      orientation="{{orientation}}"
+      object-fit="{{objectFit}}"
+      bindstatechange="statechange"
+      bindfullscreenchange="fullscreenchange"
+      bindnetstatus="netstatus"
+      binderror="error"
+    >
+      <cover-image
+        hidden="{{pulling}}"
+        class="video coverImg"
+        src="/res/img/bg.png"
+        background-size="cover"
+      ></cover-image>
+      <cover-view class="action f-ov">
+        <cover-view class="action-play">
+          <cover-view wx:if="{{pulling}}" class="action-play-btn">
+            <cover-image src="/res/img/pause.png" class="action-play-img" bindtap="stop"></cover-image>
+          </cover-view> 
+          <cover-view wx:else class="action-play-btn">
+            <cover-image src="/res/img/play.png" class="action-play-img" bindtap="play"></cover-image>
+          </cover-view>
+        </cover-view>
+        <cover-view class="action-param">
+          <cover-view class="action-param-item {{muted ? '' : 'f-disable'}}" bindtap="switchMuted">
+            <cover-image class="action-param-img" src="/res/img/mute.png"></cover-image>
+            <cover-view>静音</cover-view>
+          </cover-view>
+          <cover-view class="action-param-item {{objectFit === 'contain' ? '' : 'f-disable'}}" bindtap="swicthObjectFit">  
+            <cover-image class="action-param-img" src="/res/img/adapt.png"></cover-image>
+            <cover-view>{{objectFit === 'contain' ? '适应' : '填充'}}</cover-view>
+          </cover-view>
+          <cover-view class="action-param-item {{orientation === 'vertical' ? 'f-disable' : ''}}" bindtap="switchOrientation">
+            <cover-image class="action-param-img" src="/res/img/anyway.png"></cover-image>
+            <cover-view>{{orientation === 'vertical' ? '竖屏' : '横屏'}}</cover-view>
+          </cover-view>
+        </cover-view>
+      </cover-view>
+    </live-player>
+  </view>
+</view>
